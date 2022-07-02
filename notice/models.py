@@ -1,7 +1,5 @@
 from django.db import models
-from realtime.consumers import SignalsAlertWS
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
+
 # Create your models here.
 
 
@@ -35,14 +33,8 @@ class SignalAlert(models.Model):
         ordering = ['-id']
 
     def save(self, *args, **kwargs):
-        room_name = 'signals'
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(room_name, {
-            'type': 'send_alert',
-            'data': {
-                'title': self.title
-            },
-        })
+        from realtime.consumers import SignalsAlertWS
+        SignalsAlertWS.sendNewSignalAlert(self)
         return super().save(*args, **kwargs)
 
     def __str__(self):
