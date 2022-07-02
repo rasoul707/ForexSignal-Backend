@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from django.db import models
 
 # Create your models here.
@@ -38,10 +39,11 @@ class SignalAlert(models.Model):
         from channels.layers import get_channel_layer
         room_name = 'signals'
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(room_name, {
-            'type': 'send_alert',
-            'data': SignalAlertSerializer(self).data,
-        })
+        if self.pk != NULL:
+            async_to_sync(channel_layer.group_send)(room_name, {
+                'type': 'send_alert',
+                'data': SignalAlertSerializer(self).data,
+            })
         return super().save(*args, **kwargs)
 
     def __str__(self):
