@@ -38,7 +38,7 @@ class SignalAlert(models.Model):
         from channels.layers import get_channel_layer
         serializer = SignalAlertSerializer(self)
         print(serializer.data['broker_id'])
-        room_name = 'signal' + serializer.data['broker_id']
+        room_name = 'signal' + str(serializer.data['broker_id'])
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {
             'type': 'send_alert',
