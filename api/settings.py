@@ -77,7 +77,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.pubsub.RedisPubSubChannelLayer",
         "CONFIG": {
-            "hosts": [("195.248.242.210", 6379)],
+            "hosts": [("localhost", 6379)],
         },
     },
 }
