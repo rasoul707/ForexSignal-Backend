@@ -40,7 +40,7 @@ class SignalAlert(models.Model):
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {
             'type': 'send_alert',
-            'data': SignalAlertSerializer(data=self),
+            'data': SignalAlertSerializer(self).data,
         })
         return super().save(*args, **kwargs)
 
