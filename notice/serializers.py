@@ -5,6 +5,11 @@ from upload.serializers import ImageSerializer
 
 
 class SignalAlertSerializer(serializers.ModelSerializer):
+    image = ImageSerializer()
+    image_id = serializers.PrimaryKeyRelatedField(
+        queryset=Image.objects.all(), source='image',
+    )
+
     broker_id = serializers.PrimaryKeyRelatedField(
         queryset=Broker.objects.all(), source='broker'
     )
