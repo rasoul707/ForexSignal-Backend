@@ -37,7 +37,7 @@ class SignalAlert(models.Model):
     def save(self, *args, **kwargs):
         print('yyyyy')
 
-        room_name = 'signal'
+        room_name = 'signals'
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {
             'type': 'chat_message',
