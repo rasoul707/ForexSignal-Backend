@@ -1,8 +1,5 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from asgiref.sync import async_to_sync
-from notice.serializers import SignalAlertSerializer
-from channels.layers import get_channel_layer
 
 
 class SignalsAlertWS(AsyncWebsocketConsumer):
@@ -37,20 +34,20 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
             }
         )
 
+    # async def sendNewSignalAlert(signal):
+    #     room_name = 'signals'
+    #     channel_layer = get_channel_layer()
+    #     async_to_sync(channel_layer.group_send)(room_name, {
+    #         'type': 'send_alert',
+    #         'data': SignalAlertSerializer(data=signal),
+    #     })
+
     # Receive message from room group
+
     async def send_alert(self, event):
         data = event['data']
         # Send message to WebSocket
         await self.send(text_data=json.dumps({'data': data}))
-
-    async def sendNewSignalAlert(signal):
-        room_name = 'signals'
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(room_name, {
-            'type': 'send_alert',
-            'data': SignalAlertSerializer(data=signal),
-        })
-        pass
 
 
 class ArticlesWS(AsyncWebsocketConsumer):
