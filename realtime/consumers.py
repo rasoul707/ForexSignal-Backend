@@ -36,7 +36,7 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
         )
 
     # @staticmethod
-    async def senddd(self):
+    async def send(self):
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,

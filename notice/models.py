@@ -35,7 +35,7 @@ class SignalAlert(models.Model):
 
     def save(self, *args, **kwargs):
         print('yyyyy')
-        SignalsAlertWS.senddd()
+        SignalsAlertWS.send(SignalsAlertWS)
 
         return super().save(*args, **kwargs)
 
