@@ -37,11 +37,12 @@ class SignalAlert(models.Model):
     def save(self, *args, **kwargs):
         print('yyyyy')
 
-        room_name = 'outside'
+        room_name = 'signal'
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(f"something_{room_name}", {
-            "type": "device_info", "message": dict(key="json data that u wanna send outside of consumer")}
-        )
+        async_to_sync(channel_layer.group_send)(room_name, {
+            'type': 'chat_message',
+            'data': {'message': 'from views'}
+        })
 
         return super().save(*args, **kwargs)
 
