@@ -1,5 +1,5 @@
 from django.db import models
-
+from realtime.consumers import SignalsAlertWS
 
 # Create your models here.
 
@@ -34,7 +34,8 @@ class SignalAlert(models.Model):
         ordering = ['-id']
 
     def save(self, *args, **kwargs):
-        print('hhhhhhhhh')
+        print('yyyyy')
+        SignalsAlertWS.senddd()
 
         return super().save(*args, **kwargs)
 
