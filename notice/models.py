@@ -1,6 +1,7 @@
 from django.db import models
 from realtime.consumers import SignalsAlertWS
-
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 # Create your models here.
 
 
@@ -35,7 +36,13 @@ class SignalAlert(models.Model):
 
     def save(self, *args, **kwargs):
         print('yyyyy')
-        SignalsAlertWS.senddddd(SignalsAlertWS)
+
+        room_name = 'outside'
+
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(f"something_{room_name}", {
+            "type": "device_info", "message": dict(key="json data that u wanna send outside of consumer")}
+        )
 
         return super().save(*args, **kwargs)
 
