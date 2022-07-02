@@ -35,16 +35,14 @@ class SignalAlert(models.Model):
         ordering = ['-id']
 
     def save(self, *args, **kwargs):
-        print('yyyyy')
-
         room_name = 'signals'
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {
-            'type': 'chat_message',
-            'data': {'message': 'from views'},
-            "message": "abbas",
+            'type': 'send_alert',
+            'data': {
+                'title': self.title
+            },
         })
-
         return super().save(*args, **kwargs)
 
     def __str__(self):

@@ -26,25 +26,22 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        data = text_data_json['data']
 
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
             {
-                'type': 'chat_message',
-                'message': message
+                'type': 'send_alert',
+                'data': data
             }
         )
 
     # Receive message from room group
-    async def chat_message(self, event):
-        message = event['message']
-
+    async def send_alert(self, event):
+        data = event['data']
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({
-            'message': message
-        }))
+        await self.send(text_data=json.dumps({'data': data}))
 
 
 class ArticlesWS(AsyncWebsocketConsumer):
