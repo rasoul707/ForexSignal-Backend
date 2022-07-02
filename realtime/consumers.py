@@ -4,8 +4,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class SignalsAlertWS(AsyncWebsocketConsumer):
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
+        self.room_group_name = 'signals'
 
         # Join room group
         await self.channel_layer.group_add(
@@ -48,8 +47,7 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
 
 class ArticlesWS(AsyncWebsocketConsumer):
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
+        self.room_group_name = 'articles'
 
         # Join room group
         await self.channel_layer.group_add(
