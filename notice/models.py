@@ -36,11 +36,12 @@ class SignalAlert(models.Model):
         from asgiref.sync import async_to_sync
         from notice.serializers import SignalAlertSerializer
         from channels.layers import get_channel_layer
-        room_name = 'signals'
+        serializer = SignalAlertSerializer(self)
+        room_name = 'signals/' + serializer.broker_id + '/'
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {
             'type': 'send_alert',
-            'data': SignalAlertSerializer(self).data,
+            'data': serializer.data,
         })
         return super().save(*args, **kwargs)
 
