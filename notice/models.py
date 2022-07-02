@@ -41,7 +41,8 @@ class SignalAlert(models.Model):
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {
             'type': 'chat_message',
-            'data': {'message': 'from views'}
+            'data': {'message': 'from views'},
+            "message": "abbas",
         })
 
         return super().save(*args, **kwargs)
