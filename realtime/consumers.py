@@ -5,7 +5,9 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 class SignalsAlertWS(AsyncWebsocketConsumer):
 
     async def connect(self):
-        self.room_group_name = 'signals/1/'
+
+        self.room_group_broker = self.scope['url_route']['kwargs']['broker']
+        self.room_group_name = 'signals/' + self.room_group_broker + '/'
         # Join room group
         await self.channel_layer.group_add(
             self.room_group_name,
