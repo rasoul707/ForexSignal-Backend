@@ -38,7 +38,6 @@ class SignalAlert(models.Model):
         print('yyyyy')
 
         room_name = 'outside'
-
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(f"something_{room_name}", {
             "type": "device_info", "message": dict(key="json data that u wanna send outside of consumer")}

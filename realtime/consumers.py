@@ -14,8 +14,6 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
-        await self.render()
-        async_to_sync(self.room_group_name)('render_updates_group')
 
     async def disconnect(self, close_code):
         # Leave room group
@@ -23,9 +21,9 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
-        async_to_sync(self.room_group_name)('render_updates_group')
 
     # Receive message from WebSocket
+
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
