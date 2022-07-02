@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=rqbfyn!8yphw07_k_84fb^c5!(ap+*_s@=6b1k-!(=!&%!20o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['195.248.242.210']
+ALLOWED_HOSTS = ['::1', 'localhost', '127.0.0.1', '195.248.242.210']
 
 
 # Application definition
@@ -199,5 +199,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = 'media/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:3000"
+    "http://127.0.0.1:3000",
+    "http://195.248.242.210:3000",
+    "https://195.248.242.210:3000",
 ]
