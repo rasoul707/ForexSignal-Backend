@@ -15,16 +15,21 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls.conf import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
 
+def HomeAPI(request): return HttpResponse("API")
+
+
 urlpatterns = [
     path(r'admin/', admin.site.urls),
+    path(r'api/', HomeAPI),
     path(r'api/auth/', include('authentication.urls')),
     path(r'api/notice/', include('notice.urls')),
     path(r'api/upload/', include('upload.urls')),
-    path(r'api/settings/', include('appsetting.urls')),
+    path(r'api/license/', include('license.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

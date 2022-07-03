@@ -2,4 +2,9 @@ from rest_framework import routers
 from .views import *
 
 
-urlpatterns = []
+router = routers.DefaultRouter()
+
+router.register(r'license', LicenseViewSet)
+
+
+urlpatterns = router.urls
