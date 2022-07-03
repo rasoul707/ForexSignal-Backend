@@ -4,19 +4,14 @@ from .models import Account
 from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework import serializers
 from upload.serializers import ImageSerializer
-from upload.models import Image
-from allauth.account import app_settings as allauth_settings
-from allauth.utils import email_address_exists
+from license.serializers import LicenseSerializerAccount
 from allauth.account.adapter import get_adapter
-from allauth.account.utils import setup_user_email
 
 
 class CustomUserDetailSerializer(UserDetailsSerializer):
 
     avatar = ImageSerializer(read_only=True)
-    avatar_id = serializers.PrimaryKeyRelatedField(
-        queryset=Image.objects.all(), source='avatar'
-    )
+    license = LicenseSerializerAccount(read_only=True)
 
     class Meta():
         model = Account
@@ -26,7 +21,6 @@ class CustomUserDetailSerializer(UserDetailsSerializer):
             'first_name',
             'last_name',
             'is_verified_email',
-            'avatar_id',
             'avatar',
             'broker',
             'token',
