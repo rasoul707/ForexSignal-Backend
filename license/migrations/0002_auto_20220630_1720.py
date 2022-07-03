@@ -7,29 +7,25 @@ import datetime
 def addDefault(apps, schema_editor):
     License = apps.get_model('license', 'License')
     license1 = License(
-        title="NoLicense",
-        price=0,
-        description="NoLicense",
-        duration=datetime.timedelta(days=0),
-        unlimited=True
-    )
-    license1.save()
-    license2 = License(
+        id=1,
         title="Trial",
         price=0,
         description="Trial",
         duration=datetime.timedelta(days=1),
-        unlimited=False
+        unlimited=False,
+        private=True
+    )
+    license1.save()
+    license2 = License(
+        id=2,
+        title="Full",
+        price=0,
+        description="Full",
+        duration=datetime.timedelta(days=0),
+        unlimited=True,
+        private=True
     )
     license2.save()
-    license3 = License(
-        title="FullAccess",
-        price=0,
-        description="FullAccess",
-        duration=datetime.timedelta(days=0),
-        unlimited=True
-    )
-    license3.save()
 
 
 class Migration(migrations.Migration):

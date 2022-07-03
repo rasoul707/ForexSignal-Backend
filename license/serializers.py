@@ -7,9 +7,8 @@ class LicenseSerializerAccount(serializers.ModelSerializer):
     class Meta:
         model = License
         fields = [
-            'id',
             'title',
-            'unlimited'
+            'unlimited',
         ]
 
 

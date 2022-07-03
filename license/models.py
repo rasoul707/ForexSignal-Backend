@@ -9,9 +9,9 @@ class License(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
     price = models.IntegerField(blank=False, null=False)
     description = models.TextField()
-    is_active = models.BooleanField(
-        "active",
-        default=True,
+    private = models.BooleanField(
+        "private",
+        default=False,
     )
     unlimited = models.BooleanField(
         "unlimited",
