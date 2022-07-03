@@ -14,7 +14,7 @@ class License(models.Model):
         "unlimited",
         default=False,
     )
-    duration = models.DurationField()
+    duration = models.IntegerField(blank=False, null=False)
 
     def __str__(self):
         return self.title
