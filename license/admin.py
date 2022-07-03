@@ -9,7 +9,7 @@ class LicenseAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             "fields": (
-                'title', 'price', 'is_private', 'unlimited', 'duration'
+                'title', 'price', 'is_private', 'unlimited', 'duration', 'description'
             ),
         }),
     )
