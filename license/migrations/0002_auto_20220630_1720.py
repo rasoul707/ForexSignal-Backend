@@ -13,15 +13,17 @@ def addDefault(apps, schema_editor):
         description="Trial",
         duration=datetime.timedelta(days=1),
         unlimited=False,
+        is_private=True
     )
     license1.save()
     license2 = License(
         id=2,
-        title="Full",
+        title="Forever",
         price=0,
-        description="Full",
-        duration=datetime.timedelta(days=0),
+        description="Forever",
+        duration=datetime.timedelta(seconds=0),
         unlimited=True,
+        is_private=True
     )
     license2.save()
 

@@ -4,11 +4,14 @@ from .models import License
 
 class LicenseSerializerAccount(serializers.ModelSerializer):
 
+    is_trial = True
+
     class Meta:
         model = License
         fields = [
             'title',
             'unlimited',
+            'is_trial'
         ]
 
 
@@ -21,7 +24,6 @@ class LicenseSerializer(serializers.ModelSerializer):
             'title',
             'price',
             'description',
-            'is_active',
             'unlimited',
             'duration'
         ]

@@ -8,6 +8,6 @@ class AppSetting(models.Model):
         'active trial', default=True
     )
     trial_license = models.ForeignKey(
-        "license.License", on_delete=models.SET_NULL, null=True
+        "license.License", on_delete=models.SET_NULL, default=1
     )
     edit = "Edit"
