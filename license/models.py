@@ -18,3 +18,6 @@ class License(models.Model):
 
     def __str__(self):
         return self.title
+
+    def int(self):
+        return self.id
