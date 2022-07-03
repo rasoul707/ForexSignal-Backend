@@ -8,13 +8,7 @@ class LicenseSerializerAccount(serializers.ModelSerializer):
     is_trial = serializers.SerializerMethodField('is_trial_license')
 
     def is_trial_license(self, foo):
-        bb = AppSetting.objects.get(pk=1)
-        print("M", bb)
-        print("B", bb.trial_license_id)
-        print("C", bb.trial_license.id)
-        print("C", bb.trial_license.pk)
-
-        return foo.id == AppSetting.objects.get(pk=1).trial_license
+        return foo.id == AppSetting.objects.get(pk=1).trial_license_id
 
     class Meta:
         model = License
