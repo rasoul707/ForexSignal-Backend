@@ -5,7 +5,7 @@ from .models import *
 
 
 class LicenseAdmin(admin.ModelAdmin):
-    list_display = ['title', 'price', 'private', 'unlimited', 'duration']
+    list_display = ['title', 'price', 'is_private', 'unlimited', 'duration']
 
 
 admin.site.register(License, LicenseAdmin)

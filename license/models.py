@@ -9,7 +9,7 @@ class License(models.Model):
     title = models.CharField(max_length=100, blank=False, null=False)
     price = models.IntegerField(blank=False, null=False)
     description = models.TextField()
-    private = models.BooleanField(
+    is_private = models.BooleanField(
         "private",
         default=False,
     )
