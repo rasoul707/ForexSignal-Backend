@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import License
+from appsetting.models import AppSetting
 
 
 class LicenseSerializerAccount(serializers.ModelSerializer):
@@ -7,7 +8,7 @@ class LicenseSerializerAccount(serializers.ModelSerializer):
     is_trial = serializers.SerializerMethodField('is_trial_license')
 
     def is_trial_license(self, foo):
-        return foo.id == 1
+        return foo.id == AppSetting.objects.get(pk=1).trial_license
 
     class Meta:
         model = License
