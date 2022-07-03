@@ -12,9 +12,9 @@ class AppSettingAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=...):
         return False
 
-    list_display = ['is_active_trial', 'trial_days', 'edit']
+    list_display = ['is_active_trial', 'edit']
     list_display_links = ['edit']
-    list_editable = ['is_active_trial', 'trial_days']
+    list_editable = ['is_active_trial', ]
 
 
 admin.site.register(AppSetting, AppSettingAdmin)

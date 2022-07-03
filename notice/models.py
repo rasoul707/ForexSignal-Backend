@@ -24,13 +24,6 @@ class SignalAlert(models.Model):
     created_datetime = models.DateTimeField(auto_now_add=True)
     update_datetime = models.DateTimeField(auto_now=True)
 
-    users_received = models.ManyToManyField(
-        "authentication.Account", blank=True,
-    )
-    image = models.ForeignKey(
-        "upload.Image", on_delete=models.SET_NULL, blank=True, null=True
-    )
-
     class Meta:
         ordering = ['-id']
 

@@ -5,7 +5,7 @@ from django.db import migrations
 
 def addDefault(apps, schema_editor):
     AppSetting = apps.get_model('appsetting', 'AppSetting')
-    setting = AppSetting(is_active_trial=True, trial_days=1)
+    setting = AppSetting(is_active_trial=True,)
     setting.save()
 
 

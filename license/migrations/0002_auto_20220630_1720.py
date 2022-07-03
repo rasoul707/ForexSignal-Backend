@@ -22,6 +22,14 @@ def addDefault(apps, schema_editor):
         unlimited=False
     )
     license2.save()
+    license3 = License(
+        title="FullAccess",
+        price=0,
+        description="FullAccess",
+        duration=datetime.timedelta(days=0),
+        unlimited=True
+    )
+    license3.save()
 
 
 class Migration(migrations.Migration):
