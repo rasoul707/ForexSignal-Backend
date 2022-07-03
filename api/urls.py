@@ -27,5 +27,4 @@ urlpatterns = [
     path(r'api/notice/', include('notice.urls')),
     path(r'api/upload/', include('upload.urls')),
     path(r'api/settings/', include('appsetting.urls')),
-    path(r'chat/', include('realtime.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
