@@ -19,6 +19,7 @@ class SignalAlertSerializer(serializers.ModelSerializer):
             'broker',
             'broker_id',
             'is_active',
+            'created_datetime'
         ]
         depth = 1
 

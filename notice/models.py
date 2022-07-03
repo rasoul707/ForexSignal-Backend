@@ -19,12 +19,14 @@ class SignalAlert(models.Model):
     )
     title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=False, null=False)
-    users_received = models.ManyToManyField(
-        "authentication.Account", blank=True,
-    )
+
     is_active = models.BooleanField('active', default=True)
     created_datetime = models.DateTimeField(auto_now_add=True)
     update_datetime = models.DateTimeField(auto_now=True)
+
+    users_received = models.ManyToManyField(
+        "authentication.Account", blank=True,
+    )
     image = models.ForeignKey(
         "upload.Image", on_delete=models.SET_NULL, blank=True, null=True
     )
