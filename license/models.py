@@ -15,7 +15,6 @@ class License(models.Model):
         default=False,
     )
     duration = models.DurationField()
-    is_trial = False
 
     def __str__(self):
         return self.title

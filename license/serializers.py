@@ -4,7 +4,10 @@ from .models import License
 
 class LicenseSerializerAccount(serializers.ModelSerializer):
 
-    is_trial = True
+    is_trial = serializers.SerializerMethodField('is_trial_license')
+
+    def is_trial_license(self, foo):
+        return foo.id == 1
 
     class Meta:
         model = License
