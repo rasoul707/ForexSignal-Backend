@@ -1,6 +1,9 @@
 from lib2to3.pgen2 import token
 from dj_rest_auth.serializers import UserDetailsSerializer
 from dj_rest_auth.registration.serializers import RegisterSerializer
+
+from appsetting.models import AppSetting
+from license.models import License
 from .models import Account
 from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework import serializers
@@ -52,10 +55,22 @@ class CustomRegisterSerializer(RegisterSerializer):
     password2 = serializers.CharField(write_only=True)
 
     def custom_signup(self, request, user):
-        inviter_account = Account.objects.get(token=request.data['ref'])
-        print(inviter_account)
 
-        pass
+        appSettings = AppSetting.objects.get(pk=1)
+        if appSettings.is_active_trial:
+            trialLicense = License.objects.get(pk=appSettings.trial_license_id)
+            user.license = trialLicense.id
+            # if not trialLicense.unlimited:
+            #     user.license_expire = 30
+
+        try:
+            inviter_account = Account.objects.get(token=request.data['ref'])
+        except:
+            pass
+
+        user.inviter = inviter_account.id
+        user.save()
+        inviter_account.referrals.add(user)
 
     def get_cleaned_data(self):
         return {
