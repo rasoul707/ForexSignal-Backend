@@ -1,5 +1,4 @@
 from django.db import migrations
-import datetime
 
 
 def addDefault(apps, schema_editor):
@@ -9,7 +8,7 @@ def addDefault(apps, schema_editor):
         title="Trial",
         price=0,
         description="Trial",
-        duration=datetime.timedelta(days=1),
+        duration=1,
         unlimited=False,
         is_private=True
     )
@@ -19,7 +18,7 @@ def addDefault(apps, schema_editor):
         title="Forever",
         price=0,
         description="Forever",
-        duration=datetime.timedelta(seconds=0),
+        duration=0,
         unlimited=True,
         is_private=True
     )
