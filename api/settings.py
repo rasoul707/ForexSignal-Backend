@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'django_filters',
-    'djangosecure',
+    'sslserver',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -106,7 +106,6 @@ REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'authentication.serializers.CustomRegisterSerializer',
 }
 
-SECURE_SSL_REDIRECT = True
 
 # ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 # # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -171,9 +170,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
 ]
-MIDDLEWARE_CLASSES = [
-    'djangosecure.middleware.SecurityMiddleware',
-]
+
 
 ROOT_URLCONF = 'api.urls'
 
@@ -254,6 +251,9 @@ MEDIA_URL = 'media/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://195.248.242.210:3000",
-    "https://195.248.242.210:3000",
+    "http://195.248.242.210:2053",
+    "https://195.248.242.210:2053",
+    "http://therealrole.com:2053",
+    "https://therealrole.com:2053",
+
 ]
