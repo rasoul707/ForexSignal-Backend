@@ -68,17 +68,17 @@ class CustomRegisterSerializer(RegisterSerializer):
 
             user.save()
 
-        try:
-            inviter_account = Account.objects.get(token=request.data['ref'])
-            inviter_account.referrals.add(user)
-            inviter_account.save()
+        # try:
+        inviter_account = Account.objects.get(token=request.data['ref'])
+        inviter_account.referrals.add(user)
+        inviter_account.save()
 
-            user.inviter = inviter_account.id
-            user.save()
+        user.inviter = inviter_account.id
+        user.save()
 
-        except error:
-            print(error)
-            pass
+        # except error:
+        #     print(error)
+        #     pass
 
     def get_cleaned_data(self):
         return {
