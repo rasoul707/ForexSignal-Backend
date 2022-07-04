@@ -58,27 +58,26 @@ class CustomRegisterSerializer(RegisterSerializer):
 
     def custom_signup(self, request, user):
 
-        appSettings = AppSetting.objects.get(pk=1)
-        if appSettings.is_active_trial:
-            trialLicense = License.objects.get(pk=appSettings.trial_license_id)
-            user.license = trialLicense
-            if not trialLicense.unlimited:
-                user.license_expire = user.license_expire + \
-                    timedelta(days=trialLicense.duration)
+        try:
+            appSettings = AppSetting.objects.get(pk=1)
+            if appSettings.is_active_trial:
+                trialLicense = License.objects.get(
+                    pk=appSettings.trial_license_id)
+                user.license = trialLicense
+                if not trialLicense.unlimited:
+                    user.license_expire = user.license_expire + \
+                        timedelta(days=trialLicense.duration)
 
+                user.save()
+
+            inviter_account = Account.objects.get(token=request.data['ref'])
+            user.inviter = inviter_account
             user.save()
 
-        # try:
-        inviter_account = Account.objects.get(token=request.data['ref'])
-        inviter_account.referrals.add(user)
-        inviter_account.save()
-
-        user.inviter = inviter_account
-        user.save()
-
-        # except error:
-        #     print(error)
-        #     pass
+            inviter_account.referrals.add(user)
+            inviter_account.save()
+        except:
+            pass
 
     def get_cleaned_data(self):
         return {
