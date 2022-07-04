@@ -255,5 +255,4 @@ CORS_ALLOWED_ORIGINS = [
     "https://195.248.242.210:2053",
     "http://therealrole.com:2053",
     "https://therealrole.com:2053",
-
 ]
