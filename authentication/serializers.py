@@ -1,3 +1,4 @@
+from datetime import timedelta
 from distutils.log import error
 from lib2to3.pgen2 import token
 from dj_rest_auth.serializers import UserDetailsSerializer
@@ -61,20 +62,23 @@ class CustomRegisterSerializer(RegisterSerializer):
         if appSettings.is_active_trial:
             trialLicense = License.objects.get(pk=appSettings.trial_license_id)
             user.license = trialLicense
-            # if not trialLicense.unlimited:
-            #     user.license_expire = 30
+            if not trialLicense.unlimited:
+                user.license_expire = user.license_expire + \
+                    timedelta(days=trialLicense.duration)
 
             user.save()
 
-        # try:
-        #     inviter_account = Account.objects.get(token=request.data['ref'])
-        #     user.inviter = inviter_account.id
-        #     user.save()
-        #     inviter_account.referrals.add(user)
-        #     inviter_account.save()
-        # except error:
-        #     print(error)
-        #     pass
+        try:
+            inviter_account = Account.objects.get(token=request.data['ref'])
+            inviter_account.referrals.add(user)
+            inviter_account.save()
+
+            user.inviter = inviter_account.id
+            user.save()
+
+        except error:
+            print(error)
+            pass
 
     def get_cleaned_data(self):
         return {
