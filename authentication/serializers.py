@@ -50,8 +50,12 @@ class CustomRegisterSerializer(RegisterSerializer):
     password1 = serializers.CharField(write_only=True)
     password2 = serializers.CharField(write_only=True)
 
-    # def custom_signup(self, request, user):
-    #     pass
+    def custom_signup(self, request, user):
+        print("Hi from custom")
+        print(request.data)
+        print(request.data.ref)
+        print(request.ref)
+        pass
 
     def get_cleaned_data(self):
         return {
