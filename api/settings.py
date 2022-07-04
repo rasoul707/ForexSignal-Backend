@@ -33,7 +33,8 @@ ALLOWED_HOSTS = [
     '195.248.242.210',
     'rasoul707.ir',
     'r707.ir',
-    'therealrole.com'
+    'therealrole.com',
+    'api.therealrole.com'
 ]
 
 
