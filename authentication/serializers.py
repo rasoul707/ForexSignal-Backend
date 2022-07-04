@@ -53,8 +53,8 @@ class CustomRegisterSerializer(RegisterSerializer):
     def custom_signup(self, request, user):
         print("Hi from custom")
         print(request.data)
-        print(request.data.ref)
-        print(request.ref)
+        print("M", request.data.ref)
+
         pass
 
     def get_cleaned_data(self):
