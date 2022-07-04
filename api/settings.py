@@ -106,39 +106,39 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 }
 
 
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_SUBJECT_PREFIX = 'ForexWeb'
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'
-ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180  # for forbid spam
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+# ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+# # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_EMAIL_REQUIRED = True
+# # ACCOUNT_EMAIL_SUBJECT_PREFIX = 'ForexWeb'
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+# ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180  # for forbid spam
+# ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+# ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
 
-ACCOUNT_RATE_LIMITS = {
-    # Change password view (for users already logged in)
-    "change_password": "5/m",
-    # Email management (e.g. add, remove, change primary)
-    "manage_email": "10/m",
-    # Request a password reset, global rate limit per IP
-    "reset_password": "20/m",
-    # Rate limit measured per individual email address
-    "reset_password_email": "5/m",
-    # Password reset (the view the password reset email links to).
-    "reset_password_from_key": "20/m",
-    # Signups.
-    "signup": "20/m",
-    # NOTE: Login is already protected via `ACCOUNT_LOGIN_ATTEMPTS_LIMIT`
-}
+# ACCOUNT_RATE_LIMITS = {
+#     # Change password view (for users already logged in)
+#     "change_password": "5/m",
+#     # Email management (e.g. add, remove, change primary)
+#     "manage_email": "10/m",
+#     # Request a password reset, global rate limit per IP
+#     "reset_password": "20/m",
+#     # Rate limit measured per individual email address
+#     "reset_password_email": "5/m",
+#     # Password reset (the view the password reset email links to).
+#     "reset_password_from_key": "20/m",
+#     # Signups.
+#     "signup": "20/m",
+#     # NOTE: Login is already protected via `ACCOUNT_LOGIN_ATTEMPTS_LIMIT`
+# }
 #
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = False
-EMAIL_HOST = '127.0.0.1'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'ahmadifarr77@gmail.com'
-# EMAIL_HOST_PASSWORD = '811RaF496029#!%$'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = False
+# EMAIL_HOST = '127.0.0.1'
+# EMAIL_PORT = 25
+# EMAIL_HOST_USER = 'ahmadifarr77@gmail.com'
+# EMAIL_HOST_PASSWORD = '#!%$'
 
 
 REST_FRAMEWORK = {
