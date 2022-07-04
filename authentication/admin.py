@@ -12,7 +12,6 @@ class _UserAdmin(UserAdmin):
                 "first_name",
                 "last_name",
                 "email",
-                "is_verified_email",
                 "avatar"
             )
         }
