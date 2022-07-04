@@ -105,6 +105,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'authentication.serializers.CustomRegisterSerializer',
 }
 
+SECURE_SSL_REDIRECT = True
 
 # ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 # # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
