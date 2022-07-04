@@ -4,6 +4,10 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.crypto import get_random_string
 
 
+def generateToken():
+    return get_random_string(length=16)
+
+
 class Account(AbstractUser):
 
     is_staff = models.BooleanField(
@@ -37,7 +41,7 @@ class Account(AbstractUser):
         "notice.Broker", on_delete=models.SET_NULL, blank=True, null=True
     )
     token = models.CharField(
-        max_length=20, default=get_random_string(length=16),
+        max_length=20, default=generateToken,
     )
     referrals = models.ManyToManyField(
         "authentication.Account", related_name='referrals_accounts', blank=True,
