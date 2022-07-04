@@ -59,7 +59,7 @@ class CustomRegisterSerializer(RegisterSerializer):
         appSettings = AppSetting.objects.get(pk=1)
         if appSettings.is_active_trial:
             trialLicense = License.objects.get(pk=appSettings.trial_license_id)
-            user.license = trialLicense.id
+            user.license = trialLicense
             # if not trialLicense.unlimited:
             #     user.license_expire = 30
 
