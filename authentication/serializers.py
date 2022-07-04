@@ -1,3 +1,4 @@
+from distutils.log import error
 from lib2to3.pgen2 import token
 from dj_rest_auth.serializers import UserDetailsSerializer
 from dj_rest_auth.registration.serializers import RegisterSerializer
@@ -63,14 +64,17 @@ class CustomRegisterSerializer(RegisterSerializer):
             # if not trialLicense.unlimited:
             #     user.license_expire = 30
 
-        try:
-            inviter_account = Account.objects.get(token=request.data['ref'])
-        except:
-            pass
+            user.save()
 
-        user.inviter = inviter_account.id
-        user.save()
-        inviter_account.referrals.add(user)
+        # try:
+        #     inviter_account = Account.objects.get(token=request.data['ref'])
+        #     user.inviter = inviter_account.id
+        #     user.save()
+        #     inviter_account.referrals.add(user)
+        #     inviter_account.save()
+        # except error:
+        #     print(error)
+        #     pass
 
     def get_cleaned_data(self):
         return {
