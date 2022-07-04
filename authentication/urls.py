@@ -15,5 +15,4 @@ urlpatterns = [
     # path(r'login/facebook/', FacebookLogin.as_view(), name='facebook_login'),
     # path(r'login/twitter/', TwitterLogin.as_view(), name='twitter_login'),
     # path(r'login/google/', GoogleLogin.as_view(), name='google_login'),
-    path(r'fff/', FFF.as_view()),
 ]

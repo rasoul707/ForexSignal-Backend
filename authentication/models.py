@@ -30,7 +30,6 @@ class Account(AbstractUser):
     email = models.EmailField(
         "email address", blank=False, null=False, unique=True,
     )
-    is_verified_email = models.BooleanField('verified email', default=False)
     avatar = models.ForeignKey(
         "upload.Image", on_delete=models.SET_NULL, blank=True, null=True
     )
@@ -54,4 +53,13 @@ class Account(AbstractUser):
     )
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username", "first_name", "last_name"]
+    REQUIRED_FIELDS = ["first_name", "last_name"]
+
+    # first_name
+    # last_name
+    # email
+    # username
+    # license
+    # license_expire
+    # inviter
+    # password
