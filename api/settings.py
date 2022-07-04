@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'django_filters',
+    'djangosecure',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -167,6 +168,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    "djangosecure.middleware.SecurityMiddleware"
 ]
 
 ROOT_URLCONF = 'api.urls'
