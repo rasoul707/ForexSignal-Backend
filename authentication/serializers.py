@@ -52,7 +52,7 @@ class CustomRegisterSerializer(RegisterSerializer):
     password2 = serializers.CharField(write_only=True)
 
     def custom_signup(self, request, user):
-        inviter_account = Account.objects.filter(token=request.data['ref'])
+        inviter_account = Account.objects.get(token=request.data['ref'])
         print(inviter_account)
 
         pass
