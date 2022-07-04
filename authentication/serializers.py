@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from dj_rest_auth.serializers import UserDetailsSerializer
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from .models import Account
@@ -51,9 +52,8 @@ class CustomRegisterSerializer(RegisterSerializer):
     password2 = serializers.CharField(write_only=True)
 
     def custom_signup(self, request, user):
-        print("Hi from custom")
-        print(request.data)
-        print("M", request.data['ref'])
+        inviter_account = Account.objects.filter(token=request.data['ref'])
+        print(inviter_account)
 
         pass
 
