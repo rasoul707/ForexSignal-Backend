@@ -73,7 +73,7 @@ class CustomRegisterSerializer(RegisterSerializer):
         inviter_account.referrals.add(user)
         inviter_account.save()
 
-        user.inviter = inviter_account.id
+        user.inviter = inviter_account
         user.save()
 
         # except error:
