@@ -3,8 +3,15 @@ from django.shortcuts import render
 from .models import *
 from .serializers import *
 from rest_framework import permissions, viewsets, response
+from rest_framework.pagination import PageNumberPagination
 
 # Create your views here.
+
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'per'
+    page_query_param = 'p'
 
 
 class SignalAlertViewSet(viewsets.ReadOnlyModelViewSet):
@@ -13,6 +20,7 @@ class SignalAlertViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['broker']
     queryset = SignalAlert.objects.all()
     permission_classes = [permissions.AllowAny]
+    pagination_class = StandardResultsSetPagination
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(
