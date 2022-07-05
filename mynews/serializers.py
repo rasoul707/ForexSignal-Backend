@@ -18,6 +18,7 @@ class MyNewsSerializer(serializers.ModelSerializer):
             'excerpt',
             'content',
             'image',
+            'image_id',
             'created_datetime',
             'update_datetime',
             'status'

@@ -30,15 +30,15 @@ class MyNews(models.Model):
         verbose_name = "My News"
         verbose_name_plural = "My News"
 
-    def save(self, *args, **kwargs):
-        from asgiref.sync import async_to_sync
-        from .serializers import MyNewsSerializer
-        from channels.layers import get_channel_layer
-        serializer = MyNewsSerializer(self)
-        room_name = 'news'
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(room_name, {
-            'type': 'send_news',
-            'data': serializer.data,
-        })
-        return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     from asgiref.sync import async_to_sync
+    #     from .serializers import MyNewsSerializer
+    #     from channels.layers import get_channel_layer
+    #     serializer = MyNewsSerializer(self)
+    #     room_name = 'news'
+    #     channel_layer = get_channel_layer()
+    #     async_to_sync(channel_layer.group_send)(room_name, {
+    #         'type': 'send_news',
+    #         'data': serializer.data,
+    #     })
+    #     return super().save(*args, **kwargs)
