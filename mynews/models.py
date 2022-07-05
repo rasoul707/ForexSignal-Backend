@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 # Create your models here.
@@ -26,6 +27,8 @@ class MyNews(models.Model):
 
     class Meta:
         ordering = ['-created_datetime']
+        verbose = "My News"
+        verbose_name_plural = "My News"
 
     def save(self, *args, **kwargs):
         from asgiref.sync import async_to_sync
