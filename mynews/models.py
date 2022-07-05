@@ -27,7 +27,7 @@ class MyNews(models.Model):
 
     class Meta:
         ordering = ['-created_datetime']
-        verbose = "My News"
+        verbose_name = "My News"
         verbose_name_plural = "My News"
 
     def save(self, *args, **kwargs):
