@@ -251,10 +251,10 @@ MEDIA_URL = 'media/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://195.248.242.210:2053",
-    "https://195.248.242.210:2053",
-    "http://therealrole.com:2053",
-    "https://therealrole.com:2053",
+    "http://195.248.242.210:2083",
+    "https://195.248.242.210:2083",
+    "http://therealrole.com:2083",
+    "https://therealrole.com:2083",
 ]
 
 
