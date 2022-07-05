@@ -25,14 +25,13 @@ class SignalAlert(models.Model):
     update_datetime = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-created_datetime']
 
     def save(self, *args, **kwargs):
         from asgiref.sync import async_to_sync
-        from notice.serializers import SignalAlertSerializer
+        from .serializers import SignalAlertSerializer
         from channels.layers import get_channel_layer
         serializer = SignalAlertSerializer(self)
-        print(serializer.data['broker_id'])
         room_name = 'signal' + str(serializer.data['broker_id'])
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(room_name, {

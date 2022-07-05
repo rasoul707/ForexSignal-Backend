@@ -32,4 +32,5 @@ urlpatterns = [
     path(r'api/notice/', include('notice.urls')),
     path(r'api/upload/', include('upload.urls')),
     path(r'api/license/', include('license.urls')),
+    path(r'api/news/', include('mynews.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

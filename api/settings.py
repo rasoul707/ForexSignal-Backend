@@ -76,7 +76,10 @@ INSTALLED_APPS = [
 
 
     'channels',
-    'realtime'
+    'realtime',
+
+    'mynews',
+    'ticketing'
 
 
 ]
