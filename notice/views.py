@@ -41,6 +41,8 @@ class NewSignal(views.APIView):
     def post(self, request, *args, **kwargs):
 
         print("Hi")
+        print(request)
         print(request.data)
+        print(request.data['body'])
 
-        return response.Response(True)
+        return response.Response(1)
