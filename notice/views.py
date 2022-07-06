@@ -38,11 +38,13 @@ class BrokerViewSet(viewsets.ReadOnlyModelViewSet):
 class NewSignal(views.APIView):
     permission_classes = [permissions.AllowAny]
 
-    def post(self, request, *args, **kwargs):
-
+    def get(self, request, *args, **kwargs):
+        sy = self.request.query_params.get('sy')
+        tf = self.request.query_params.get('tf')
+        dir = self.request.query_params.get('dir')
         print("Hi")
-        print(request)
-        print(request.data)
-        print(request.data['body'])
+        print(sy)
+        print(tf)
+        print(dir)
 
         return response.Response(1)
