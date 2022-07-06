@@ -35,7 +35,7 @@ class BrokerViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Broker.objects.all()
 
 
-class DataFromMT5(views.APIView):
+class NewSignal(views.APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
