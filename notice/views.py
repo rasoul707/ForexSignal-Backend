@@ -39,12 +39,19 @@ class NewSignal(views.APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request, *args, **kwargs):
-        sy = self.request.query_params.get('sy')
-        tf = self.request.query_params.get('tf')
-        dir = self.request.query_params.get('dir')
-        print("Hi")
-        print(sy)
-        print(tf)
-        print(dir)
+        broker = self.request.query_params.get('br')
+        symbol = self.request.query_params.get('sy')
+        time_frame = self.request.query_params.get('tf')
+        direction = self.request.query_params.get('dir')
+
+        br = Broker.objects.get_or_create(name=broker)
+
+        signal = SignalAlert(
+            broker=br.id,
+            title=symbol,
+            description=direction + "," + time_frame
+        )
+
+        signal.save()
 
         return response.Response(1)

@@ -30,9 +30,3 @@ from rest_framework.response import Response
 #     adapter_class = TwitterOAuthAdapter
 
 
-class FFF(views.APIView):
-    permission_classes = [permissions.AllowAny]
-
-    def get(self, request, format=None):
-        # print(settings)
-        return Response("settings")
