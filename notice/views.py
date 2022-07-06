@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import *
 from .serializers import *
-from rest_framework import permissions, viewsets, response
+from rest_framework import permissions, viewsets, response, views
 from rest_framework.pagination import PageNumberPagination
 
 # Create your views here.
@@ -19,7 +19,7 @@ class SignalAlertViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = None
     filterset_fields = ['broker']
     queryset = SignalAlert.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
 
     def list(self, request, *args, **kwargs):
@@ -33,3 +33,15 @@ class SignalAlertViewSet(viewsets.ReadOnlyModelViewSet):
 class BrokerViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = BrokerSerializer
     queryset = Broker.objects.all()
+
+
+class DataFromMT5(views.APIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = SignalAlertSerializer
+
+    def post(self, request, *args, **kwargs):
+
+        print("Hi")
+        print(request.data)
+
+        return response.Response(True)

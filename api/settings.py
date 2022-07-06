@@ -47,26 +47,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
     'corsheaders',
     'django_filters',
 
-
     'rest_framework',
     'rest_framework.authtoken',
-    'dj_rest_auth',
 
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'dj_rest_auth',
     'dj_rest_auth.registration',
-
-
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.twitter',
-    'allauth.socialaccount.providers.facebook',
-
     'rest_framework_simplejwt',
+
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.facebook',
+
+
 
     'appsetting',
     'authentication',
