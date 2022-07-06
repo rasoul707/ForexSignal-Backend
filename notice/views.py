@@ -47,7 +47,7 @@ class NewSignal(views.APIView):
         br = Broker.objects.get_or_create(name=broker)
 
         signal = SignalAlert(
-            broker=br.id,
+            broker=br,
             title=symbol,
             description=direction + "," + time_frame
         )
