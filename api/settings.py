@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '195.248.242.210',
+    '195.248.242.25'
     'rasoul707.ir',
     'r707.ir',
     'therealrole.com',
@@ -254,10 +255,18 @@ MEDIA_URL = 'media/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+
+    "http://195.248.242.210:80",
     "http://195.248.242.210:2083",
-    "https://195.248.242.210:2083",
+
+    "http://195.248.242.25:80",
+    "http://195.248.242.25:2083",
+
+
+
     "http://therealrole.com:2083",
     "https://therealrole.com:2083",
+
     "http://therealrole.com",
     "https://therealrole.com",
 ]
