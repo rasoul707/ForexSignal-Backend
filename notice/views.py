@@ -37,7 +37,6 @@ class BrokerViewSet(viewsets.ReadOnlyModelViewSet):
 
 class DataFromMT5(views.APIView):
     permission_classes = [permissions.AllowAny]
-    serializer_class = SignalAlertSerializer
 
     def post(self, request, *args, **kwargs):
 
