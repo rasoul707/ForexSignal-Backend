@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '195.248.242.210',
-    '195.248.242.25'
+    '195.248.242.25',
     'rasoul707.ir',
     'r707.ir',
     'therealrole.com',
