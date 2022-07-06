@@ -44,7 +44,7 @@ class NewSignal(views.APIView):
         time_frame = self.request.query_params.get('tf')
         direction = self.request.query_params.get('dir')
 
-        br = Broker.objects.get_or_create(name=broker)
+        br = Broker.objects.get(name=broker)
 
         signal = SignalAlert(
             broker=br,
