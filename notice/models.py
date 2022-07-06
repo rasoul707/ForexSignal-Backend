@@ -6,7 +6,7 @@ from django.db import models
 class Broker(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     logo = models.ForeignKey(
-        "upload.Image", on_delete=models.SET_NULL, blank=False, null=False,
+        "upload.Image", on_delete=models.CASCADE, blank=False, null=False,
     )
 
     def __str__(self):
