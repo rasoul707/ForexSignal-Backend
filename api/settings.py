@@ -258,14 +258,14 @@ CORS_ALLOWED_ORIGINS = [
 
     "http://195.248.242.210:80",
     "http://195.248.242.210:2083",
-
-    "http://195.248.242.25:80",
-    "http://195.248.242.25:2083",
-
+    "http://195.248.242.210:2087",
 
 
     "http://therealrole.com:2083",
     "https://therealrole.com:2083",
+
+    "http://therealrole.com:2087",
+    "https://therealrole.com:2087",
 
     "http://therealrole.com",
     "https://therealrole.com",
