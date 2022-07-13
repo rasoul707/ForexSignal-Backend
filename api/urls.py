@@ -36,5 +36,8 @@ urlpatterns = [
     path(r'api/upload/', include('upload.urls')),
     path(r'api/license/', include('license.urls')),
     path(r'api/news/', include('mynews.urls')),
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', serve,
+        {'document_root': settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,
+        {'document_root': settings.STATIC_ROOT})
 ]
