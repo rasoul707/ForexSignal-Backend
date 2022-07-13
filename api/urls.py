@@ -29,7 +29,7 @@ urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'api/', HomeAPI),
     path(r'api/auth/', include('authentication.urls')),
-    path(r'api/setting/', include('authentication.urls')),
+    path(r'api/setting/', include('appsetting.urls')),
     path(r'api/notice/', include('notice.urls')),
     path(r'api/upload/', include('upload.urls')),
     path(r'api/license/', include('license.urls')),
