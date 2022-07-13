@@ -10,4 +10,6 @@ class AppSetting(models.Model):
     trial_license = models.ForeignKey(
         "license.License", on_delete=models.SET_NULL, default=1, null=True
     )
+    pay_description = models.TextField(default="توضیحات پرداخت")
+    terms = models.TextField(default="داخت")
     edit = "Edit"
