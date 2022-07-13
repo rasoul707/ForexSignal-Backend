@@ -12,6 +12,8 @@ class Migration(migrations.Migration):
         ('license', '0002_auto_20220704_2027'),
     ]
 
+    
+
     operations = [
         migrations.CreateModel(
             name='AppSetting',

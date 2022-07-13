@@ -10,9 +10,9 @@ def addDefault(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('appsetting', '0001_initial'),
+        ('appsetting', '0001_initial')
     ]
 
     operations = [
-        migrations.RunPython(addDefault),
+        migrations.RunPython(addDefault)
     ]
