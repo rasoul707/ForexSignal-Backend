@@ -19,7 +19,8 @@ from django.http import HttpResponse
 from django.urls.conf import include
 from django.urls import path
 from django.conf import settings
-from django.conf.urls.static import static
+from django.conf.urls import static
+from django.views.static import serve
 
 
 def HomeAPI(request): return HttpResponse("API")
@@ -34,4 +35,8 @@ urlpatterns = [
     path(r'api/upload/', include('upload.urls')),
     path(r'api/license/', include('license.urls')),
     path(r'api/news/', include('mynews.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path(r'^media/(?P<path>.*)$', serve,
+         {'document_root': settings.MEDIA_ROOT}),
+    path(r'^static/(?P<path>.*)$', serve,
+         {'document_root': settings.STATIC_ROOT}),
+]
