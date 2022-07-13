@@ -4,5 +4,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 
+router.register(r'setting', AppSettingViewSet)
 
-urlpatterns = []
+
+urlpatterns = router.urls
