@@ -21,6 +21,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls import static
 from django.views.static import serve
+from django.conf.urls import url
 
 
 def HomeAPI(request): return HttpResponse("API")
@@ -35,8 +36,5 @@ urlpatterns = [
     path(r'api/upload/', include('upload.urls')),
     path(r'api/license/', include('license.urls')),
     path(r'api/news/', include('mynews.urls')),
-    path(r'^media/(?P<path>.*)$', serve,
-         {'document_root': settings.MEDIA_ROOT}),
-    path(r'^static/(?P<path>.*)$', serve,
-         {'document_root': settings.STATIC_ROOT}),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]
