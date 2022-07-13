@@ -80,7 +80,6 @@ INSTALLED_APPS = [
     'realtime',
 
     'mynews',
-    'ticketing'
 
 
 ]

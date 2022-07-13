@@ -22,12 +22,13 @@ class SignalAlertViewSet(viewsets.ReadOnlyModelViewSet):
     # permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(
-            SignalAlert.objects.filter(is_active=True)
-        )
-        serializer = self.get_serializer(queryset, many=True)
-        return response.Response(serializer.data)
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.filter_queryset(
+    #         SignalAlert.objects.filter(is_active=True)
+
+    #     )
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return response.Response(serializer.data)
 
 
 class BrokerViewSet(viewsets.ReadOnlyModelViewSet):
