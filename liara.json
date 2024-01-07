@@ -1,0 +1,16 @@
+{
+  "port": "8000",
+  "django": {
+    "pythonVersion": "3.11"
+  },
+  "disks": [
+    {
+      "name": "sqlite",
+      "mountTo": "db"
+    },
+    {
+      "name": "media",
+      "mountTo": "media"
+    }
+  ]
+}
