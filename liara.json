@@ -1,4 +1,5 @@
 {
+  "app": "forexapi",
   "port": "8000",
   "django": {
     "pythonVersion": "3.11"

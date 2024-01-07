@@ -160,7 +160,6 @@ REST_FRAMEWORK = {
 REST_USE_JWT = True
 
 MIDDLEWARE = [
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -169,7 +168,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    "allauth.account.middleware.AccountMiddleware"
+    # "allauth.account.middleware.AccountMiddleware"
 ]
 
 
