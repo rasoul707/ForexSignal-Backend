@@ -18,6 +18,8 @@ class SignalAlertSerializer(serializers.ModelSerializer):
             'description',
             'broker',
             'broker_id',
+            'percent',
+            'winrate',
             'is_active',
             'created_datetime'
         ]

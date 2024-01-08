@@ -19,6 +19,9 @@ class SignalAlert(models.Model):
     )
     title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=False, null=False)
+    percent = models.DecimalField(max_digits=6, decimal_places=1, default=2.5, blank=False, null=False)
+    winrate = models.DecimalField(max_digits=6, decimal_places=1, default=80, blank=False, null=False)
+
 
     is_active = models.BooleanField('active', default=True)
     created_datetime = models.DateTimeField(auto_now_add=True)
