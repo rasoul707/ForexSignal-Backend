@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.facebook',
 
-
+    'django_object_actions',
 
     'appsetting',
     'authentication',
