@@ -53,6 +53,24 @@ class NewSignal(views.APIView):
             description=direction + "," + time_frame
         )
 
+        r = signal.save()
+
+        return response.Response(r.pk)
+
+
+
+
+class SignalResult(views.APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        signal_id = self.request.query_params.get('id')
+        result = self.request.query_params.get('result')
+
+        signal = SignalAlert.objects.get(pk=signal_id)
+
+        signal.result = result
+
         signal.save()
 
         return response.Response(1)
