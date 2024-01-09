@@ -18,7 +18,7 @@ class SignalAlertViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SignalAlertSerializer
     pagination_class = None
     filterset_fields = ['broker']
-    queryset = SignalAlert.objects.all()
+    queryset = SignalAlert.objects.filter(is_active=True)
     # permission_classes = [permissions.AllowAny]
     pagination_class = StandardResultsSetPagination
 
