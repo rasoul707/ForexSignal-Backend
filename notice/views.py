@@ -47,10 +47,13 @@ class NewSignal(views.APIView):
 
         br = Broker.objects.get(name=broker)
 
+        appSettings = AppSetting.objects.get(pk=1)
         signal = SignalAlert(
             broker=br,
             title=symbol,
-            description=direction + "," + time_frame
+            description=direction + "," + time_frame,
+            percent=appSettings.percent,
+            winrate=appSettings.winrate,
         )
 
         r = signal.save()
