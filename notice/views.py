@@ -4,6 +4,7 @@ from .models import *
 from .serializers import *
 from rest_framework import permissions, viewsets, response, views
 from rest_framework.pagination import PageNumberPagination
+from appsetting.models import AppSetting
 
 # Create your views here.
 
