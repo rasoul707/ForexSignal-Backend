@@ -65,11 +65,11 @@ class SignalResult(views.APIView):
 
     def get(self, request, *args, **kwargs):
         signal_id = self.request.query_params.get('id')
-        result = self.request.query_params.get('result')
+        success = self.request.query_params.get('success')
 
         signal = SignalAlert.objects.get(pk=signal_id)
 
-        signal.result = result
+        signal.success = success
 
         signal.save()
 

@@ -22,7 +22,7 @@ class SignalAlertSerializer(serializers.ModelSerializer):
             'winrate',
             'is_active',
             'detail',
-            'result',
+            'success',
             'created_datetime'
         ]
         depth = 1

@@ -23,7 +23,7 @@ class SignalAlert(models.Model):
     winrate = models.DecimalField(max_digits=6, decimal_places=1, default=80, blank=False, null=False)
     detail = models.TextField(blank=True, null=True)
 
-    result = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    success = models.BooleanField('success', null=True)
 
     is_active = models.BooleanField('active', default=True)
     created_datetime = models.DateTimeField(auto_now_add=True)
@@ -43,7 +43,11 @@ class SignalAlert(models.Model):
             'type': 'send_alert',
             'data': serializer.data,
         })
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+        return self
 
     def __str__(self):
         return self.title
+
+    def int(self):
+        return self.id
