@@ -88,7 +88,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis://:fQttF77WR2HVpUSCORbokkXm@tai.liara.cloud:31082/0")],
+            "hosts": [("redis://:rSHADQT0Kklfoe1sIFPF9z96@grand-teton.liara.cloud:33589/0")],
         },
     },
 }
