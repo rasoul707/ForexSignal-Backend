@@ -83,4 +83,16 @@ class SignalResult(views.APIView):
 
         signal.save()
 
+        from asgiref.sync import async_to_sync
+        from .serializers import SignalAlertSerializer
+        from channels.layers import get_channel_layer
+
+        room_name = 'signal' + str(signal.broker_id)
+        channel_layer = get_channel_layer()
+        serializer = SignalAlertSerializer(signal)
+        async_to_sync(channel_layer.group_send)(room_name, {
+            'type': 'send_result',
+            'data': serializer.data
+        })
+
         return response.Response(1)

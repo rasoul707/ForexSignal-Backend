@@ -25,7 +25,13 @@ class SignalsAlertWS(AsyncWebsocketConsumer):
     async def send_alert(self, event):
         data = event['data']
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({'data': data}))
+        await self.send(text_data=json.dumps({'type': 'new_signal', 'data': data}))
+
+    # Receive message from room group
+    async def send_result(self, event):
+            data = event['data']
+            # Send message to WebSocket
+            await self.send(text_data=json.dumps({'type': 'signal_result', 'data': data}))
 
 
 # class NewsWS(AsyncWebsocketConsumer):

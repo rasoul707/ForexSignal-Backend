@@ -33,6 +33,8 @@ class SignalAlert(models.Model):
         ordering = ['-created_datetime']
 
     def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
         from asgiref.sync import async_to_sync
         from .serializers import SignalAlertSerializer
         from channels.layers import get_channel_layer
@@ -43,7 +45,6 @@ class SignalAlert(models.Model):
             'type': 'send_alert',
             'data': serializer.data,
         })
-        super().save(*args, **kwargs)
         return self
 
     def __str__(self):
