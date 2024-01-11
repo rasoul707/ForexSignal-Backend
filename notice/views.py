@@ -71,6 +71,12 @@ class SignalResult(views.APIView):
         signal_id = self.request.query_params.get('id')
         success = self.request.query_params.get('success')
 
+        if success == "true":
+            success = True
+        else:
+            success = False
+
+
         signal = SignalAlert.objects.get(pk=signal_id)
 
         signal.success = success
