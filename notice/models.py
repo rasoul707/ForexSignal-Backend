@@ -33,18 +33,22 @@ class SignalAlert(models.Model):
         ordering = ['-created_datetime']
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        if self.pk is None:
+            super().save(*args, **kwargs)
 
-        from asgiref.sync import async_to_sync
-        from .serializers import SignalAlertSerializer
-        from channels.layers import get_channel_layer
-        serializer = SignalAlertSerializer(self)
-        room_name = 'signal' + str(serializer.data['broker_id'])
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(room_name, {
-            'type': 'send_alert',
-            'data': serializer.data,
-        })
+            from asgiref.sync import async_to_sync
+            from .serializers import SignalAlertSerializer
+            from channels.layers import get_channel_layer
+            serializer = SignalAlertSerializer(self)
+            room_name = 'signal' + str(serializer.data['broker_id'])
+            channel_layer = get_channel_layer()
+            async_to_sync(channel_layer.group_send)(room_name, {
+                'type': 'send_alert',
+                'data': serializer.data,
+            })
+        else:
+            super().save(*args, **kwargs)
+
         return self
 
     def __str__(self):
